@@ -2,6 +2,7 @@ const Thought = require("../models/Thought");
 const User = require("../models/User");
 
 module.exports = {
+  //Get all thoughts
   async getThoughts(req, res) {
     try {
       const thoughts = await Thought.find();
@@ -10,6 +11,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  // Get a single thought by ID
   async getSingleThought(req, res) {
     try {
       const thought = await Thought.findOne({
@@ -20,7 +22,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-
+  // Create a new thought
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
@@ -40,6 +42,7 @@ module.exports = {
       console.log(err);
     }
   },
+  // Update Thought
   async updateThought(req, res) {
     try {
       const updatethought = await Thought.findByIdAndUpdate(
@@ -52,6 +55,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  //Delete thought
   async deleteThought(req, res) {
     try {
       const deletethought = await Thought.findOneAndDelete(
@@ -77,7 +81,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-
+  //Remove reactions
   async removeReaction(req, res) {
     try {
       const reaction = await Thought.findOneAndUpdate(
