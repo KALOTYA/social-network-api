@@ -13,7 +13,14 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //Use routes
+app.get("/sanity", (req, res) => {
+  res.json({success:true});
+});
 app.use(routes);
+// app.get("/sanity", (req, res) => {
+//   res.json({success:true});
+// });
+
 
 //Database connection eventy listener 
 db.once('open', () => {
